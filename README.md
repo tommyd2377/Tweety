@@ -1,2 +1,2 @@
 # Tweety
-a twitter clone built withNode and Express
+a twitter clone built with Node and Express
