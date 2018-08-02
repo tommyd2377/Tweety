@@ -7,4 +7,5 @@ app.get('/', (req, res) => {
     res.send('hello tweety!');
 })
 
-app.listen(PORT);
+app.listen(PORT, () => 
+    console.log(`Tweety is listening on port ${PORT}!`));
