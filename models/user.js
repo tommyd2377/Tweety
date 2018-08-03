@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs');
 const db = require('../config/connection');
 
-function register({ username, email, password }) {
+function register(username, email, password) {
   return bcrypt.hash(password, 8)
     .then((hash) => {
       return db.one(`
