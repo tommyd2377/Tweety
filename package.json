@@ -4,7 +4,10 @@
   "description": "twitter clone built with Node and Express",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "schema": "psql -d tweety_db -f db/schema.sql",
+    "seed": "psql -d tweety_db -f db/seed.sql",
+    "server": "node app.js",
+    "nodemon": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -17,12 +20,16 @@
   },
   "homepage": "https://github.com/tommyd2377/Tweety#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
+    "connect-flash": "^0.1.1",
     "ejs": "^2.6.1",
     "express": "^4.16.3",
+    "express-session": "^1.15.6",
     "method-override": "^3.0.0",
     "morgan": "^1.9.0",
     "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
     "path": "^0.12.7",
     "pg-promise": "^8.4.5"
   },
