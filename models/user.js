@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs');
 const db = require('../config/connection');
 
-function register(username, email, password) {
+function register({ username, email, password }) {
   return bcrypt.hash(password, 8)
     .then((hash) => {
       return db.one(`
@@ -23,15 +23,15 @@ function findById(id) {
   `, id);
 }
 
-function findByUsername(username) {
+function findByEmail(email) {
   return db.one(`
     SELECT * FROM users
-    WHERE username = $1
-  `, username);
+    WHERE email = $1
+  `, email);
 }
 
 function login(email, password) {
-  return findByUsername(email)
+  return findByEmail(email)
     .then((user) => {
       return bcrypt.compare(password, user.password_digest)
         .then((res) => {
@@ -48,6 +48,6 @@ function login(email, password) {
 module.exports = {
   register,
   findById,
-  findByUsername,
+  findByEmail,
   login,
 }

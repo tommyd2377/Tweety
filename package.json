@@ -4,6 +4,7 @@
   "description": "twitter clone built with Node and Express",
   "main": "app.js",
   "scripts": {
+    "debug": "nodemon --inspect-brk",
     "schema": "psql -d tweety_db -f db/schema.sql",
     "seed": "psql -d tweety_db -f db/seed.sql",
     "server": "node app.js",

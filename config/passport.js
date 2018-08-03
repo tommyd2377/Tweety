@@ -1,6 +1,4 @@
-// http://www.passportjs.org/docs/configure/
 const passport = require('passport');
-// https://github.com/jaredhanson/passport-local
 const LocalStrategy = require('passport-local').Strategy;
 
 const userDB = require('../models/user');
@@ -10,9 +8,9 @@ const userDB = require('../models/user');
  * when the `passport.authorize('local') middleware is run and pass those values
  * to the callback we supply
  */
-passport.use(new LocalStrategy((username, password, done) => (
+passport.use(new LocalStrategy((email, password, done) => (
   // Try to log the user in
-  userDB.login(username, password)
+  userDB.login(email, password)
     // if the login succeeds, pass the user object as the second argument to done
     .then(user => done(null, user))
     // if the login fails, pass false as the second argument to done
