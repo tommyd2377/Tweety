@@ -3,6 +3,7 @@ const app = express();
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 const authRouter = require('./routes/auth');
+const tweetsRouter = require('./routes/tweets');
 const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
@@ -32,6 +33,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use('/auth', authRouter);
+app.use('/tweets', tweetsRouter);
 
 app.listen(PORT, () => 
     console.log(`Tweety is listening on port ${PORT}, in ${app.get('env')} mode.`));

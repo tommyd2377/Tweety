@@ -6,8 +6,8 @@ function renderLogin(req, res) {
 }
 
 const handleLogin = passport.authenticate('local', {
-  successRedirect: '/',
-  failureRedirect: '/auth/login',
+  successRedirect: '/tweets',
+  failureRedirect: '/auth/register',
   failureFlash:    'Invalid username and password',
 });
 

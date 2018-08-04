@@ -30,9 +30,17 @@ function findByEmail(email) {
   `, email);
 }
 
+function getUid(email) {
+  return db.one(`
+    SELECT id FROM users
+    WHERE email = $1
+  `, email);
+}
+
 function login(email, password) {
   return findByEmail(email)
     .then((user) => {
+      console.log(user);
       return bcrypt.compare(password, user.password_digest)
         .then((res) => {
           if (!res) throw new Error('bad password');
@@ -50,4 +58,5 @@ module.exports = {
   findById,
   findByEmail,
   login,
+  getUid,
 }
