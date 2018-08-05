@@ -1,23 +1,25 @@
 const tweet = require('../models/tweetModel');
 const user = require('../models/user');
+const passport = require('passport');
+const session = require('express-session');
 
 function renderTweets(req, res) {
     res.render('auth/tweetForm');
 }
 
+
 function handleNewTweets(req, res, next) {
     const newTweet = req.body.tweet;
-    let uid = user.getUid('tom@gopulse.io');
-    uid.then(uid => 
-             console.log(uid.id)).then
-    tweet.newTweet(newTweet, uid.id)
-        .then(newTweet => 
-            res.redirect('/tweets')
-        )
-        .catch(error => 
-            console.log(error)
-        )
+    passport.authenticate('local'),
+    tweet.newTweet(newTweet, req.user.id)
+    .then(newTweet => 
+        res.redirect('/tweets')
+    )
+    .catch(error => 
+        console.log(error)
+    )
 }
+
 
 module.exports = {
     renderTweets,

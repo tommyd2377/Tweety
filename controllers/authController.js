@@ -21,12 +21,14 @@ function handleRegister(req, res, next) {
   const password = req.body.password;
   user.register(username, email, password)
     .then((newUser) => {
-      req.login(newUser, err => 
-        (err ? next(err) : res.redirect('/tweets')));
+      req.login((newUser, err) => {
+        (err ? next(err) : res.redirect('/tweets'));
+        res.send(req.user);
+      })
     })
     .catch((err) => {
       res.redirect('/auth/register');
-    });
+    })
 }
 
 function handleLogout (req, res) {
