@@ -1,12 +1,16 @@
 const tweet = require('../models/tweetModel');
-const user = require('../models/user');
 const passport = require('passport');
-const session = require('express-session');
 
-function renderTweets(req, res) {
-    res.render('auth/tweetForm');
+function renderTweets(req, res, next) {
+    tweet.getAll()
+        .then(tweets => {
+            console.log(tweets);
+            res.locals.tweets = tweets;
+            res.render('auth/tweetForm', {
+                data: res.locals.tweets
+            })
+        })
 }
-
 
 function handleNewTweets(req, res, next) {
     const newTweet = req.body.tweet;
@@ -20,8 +24,8 @@ function handleNewTweets(req, res, next) {
     )
 }
 
-
 module.exports = {
     renderTweets,
     handleNewTweets,
 }
+

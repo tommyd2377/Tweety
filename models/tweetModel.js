@@ -11,6 +11,14 @@ function newTweet(tweet_content, creator_uid) {
       });
 }
 
+function getAll() {
+    return db.many(`
+        SELECT *
+      FROM tweets;
+  `);
+}
+
 module.exports = {
-    newTweet
+    newTweet,
+    getAll
 }

@@ -13,5 +13,13 @@
         <label for="tweet"><input type="text" name="tweet"></label>
     <button type="submit">Submit</button>
     </form>
+    <div>
+    <% for (let tweet of data) { %>
+ 
+      <p><%= tweet.tweet_content %></p>
+      <a href='/users/<%= tweet.creator_uid%>'><%= tweet.creator_uid %></a>
+
+  <% } %>
+  </div>
 </body>
-</html>
+</html> 
