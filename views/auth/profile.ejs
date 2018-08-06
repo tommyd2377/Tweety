@@ -8,11 +8,8 @@
 
 </head>
 <body>
-    <% for (let user of data) { %>
- 
-      <p><%= user.username %></p>
-      <a href='/users/<%= user.id%>'><%= user.username %></a>
-
-  <% } %>
+<h1><%= data.username %></h1>
+<h1><%= data.email %></h1>
+<%- include(./partials/userTweets) %>
 </body>
 </html>

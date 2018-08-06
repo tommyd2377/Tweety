@@ -21,9 +21,7 @@ function handleRegister(req, res, next) {
   const password = req.body.password;
   user.register(username, email, password)
     .then((newUser) => {
-      console.log(newUser);
       req.login((newUser, err) => {
-        console.log(newUser);
         (err ? next(err) : res.redirect('/tweets'));
         res.send(req.user);
       })

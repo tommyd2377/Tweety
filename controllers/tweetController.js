@@ -4,7 +4,6 @@ const passport = require('passport');
 function renderTweets(req, res, next) {
     tweet.getAll()
         .then(tweets => {
-            console.log(tweets);
             res.locals.tweets = tweets;
             res.render('auth/tweetForm', {
                 data: res.locals.tweets
@@ -15,7 +14,7 @@ function renderTweets(req, res, next) {
 function handleNewTweets(req, res, next) {
     const newTweet = req.body.tweet;
     passport.authenticate('local'),
-    tweet.newTweet(newTweet, req.user.id)
+    tweet.newTweet(newTweet, req.user.username, req.user.id)
     .then(newTweet => 
         res.redirect('/tweets')
     )

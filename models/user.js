@@ -40,7 +40,6 @@ function getUid(email) {
 function login(email, password) {
   return findByEmail(email)
     .then((user) => {
-      console.log(user);
       return bcrypt.compare(password, user.password_digest)
         .then((res) => {
           if (!res) throw new Error('bad password');

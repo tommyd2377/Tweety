@@ -13,10 +13,11 @@ CREATE TABLE users (
 CREATE INDEX ON users (username);
 
 CREATE TABLE tweets (
-      id SERIAL PRIMARY KEY,
-  tweet_content TEXT,
-    creator_uid INTEGER REFERENCES users (id),
-     created_at TIMESTAMP NOT NULL DEFAULT NOW()
+         id SERIAL PRIMARY KEY,
+     tweet_content VARCHAR(255),
+  creator_username VARCHAR(255),
+       creator_uid INTEGER REFERENCES users (id),
+        created_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
 CREATE INDEX ON tweets (creator_uid);

@@ -17,7 +17,7 @@
     <% for (let tweet of data) { %>
  
       <p><%= tweet.tweet_content %></p>
-      <a href='/users/<%= tweet.creator_uid%>'><%= tweet.creator_uid %></a>
+      <a href='/users/<%= tweet.creator_uid%>'><%= tweet.creator_username %></a>
 
   <% } %>
   </div>
