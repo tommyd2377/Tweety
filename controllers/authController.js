@@ -1,4 +1,3 @@
-const passport = require('passport');
 const user = require('../models/user');
 
 function renderLogin(req, res) {
@@ -11,7 +10,7 @@ function handleLogin(req, res, next) {
   user.login(email, password)
       .then(theUser => {
         res.redirect('/tweets');
-        res.send(req.user);
+        res.locals.user = theUser
       })
     .catch((err) => {
       console.log(err);
@@ -42,15 +41,9 @@ function handleRegister(req, res, next) {
     })
 }
 
-function handleLogout (req, res) {
-  req.logout();
-  res.redirect('/auth/login');
-}
-
 module.exports = {
   renderLogin,
   handleLogin,
   renderRegister,
   handleRegister,
-  handleLogout,
 };

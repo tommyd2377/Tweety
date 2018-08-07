@@ -1,3 +1,5 @@
+//this file is directly from John's auth example
+//I think this is the only file that I did not need to refactor for my purposes
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 

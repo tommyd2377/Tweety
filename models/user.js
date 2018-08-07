@@ -1,3 +1,4 @@
+//this file I got from John's auth example and refactored for my purposes
 const bcrypt = require('bcryptjs');
 const db = require('../config/connection');
 

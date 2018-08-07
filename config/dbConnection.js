@@ -1,3 +1,4 @@
+//all config files I got from John's auth example
 const pgp = require('pg-promise')({
     query(q) {
       console.log(q.query);

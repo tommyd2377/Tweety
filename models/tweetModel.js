@@ -2,13 +2,12 @@ const db = require('../config/connection');
 
 function newTweet(tweet_content, creator_username, creator_uid) {
     return db.one(`
-        INSERT INTO tweets (tweet_content, creator_username, creator_uid)
-        VALUES ($/tweet_content/, $/creator_username/, $/creator_uid/)
+        INSERT INTO tweets (tweet_content)
+        VALUES ($/tweet_content/)
         RETURNING *
       `, {
         tweet_content,
-        creator_username,
-        creator_uid,
+       
       });
 }
 

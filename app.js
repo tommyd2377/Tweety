@@ -1,3 +1,4 @@
+//the basis for this file came from server.js in john's auth tutorial but with a lot of refactoring
 const express = require('express');
 const app = express();
 const logger = require('morgan');

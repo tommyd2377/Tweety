@@ -1,5 +1,4 @@
 const tweet = require('../models/tweetModel');
-const passport = require('passport');
 
 function renderTweets(req, res, next) {
     tweet.getAll()
@@ -13,7 +12,8 @@ function renderTweets(req, res, next) {
 
 function handleNewTweets(req, res, next) {
     const newTweet = req.body.tweet;
-    tweet.newTweet(newTweet, req.user.username, req.user.id)
+ 
+    tweet.newTweet(newTweet)
     .then(newTweet => 
         res.redirect('/tweets')
     )
