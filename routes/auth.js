@@ -2,8 +2,8 @@ const express = require('express');
 const authRouter = express.Router();
 const {
   renderLogin,
-  handleLogin,
   renderRegister,
+  handleLogin,
   handleRegister,
   handleLogout,
 } = require('../controllers/authController');

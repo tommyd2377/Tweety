@@ -13,7 +13,6 @@ function renderTweets(req, res, next) {
 
 function handleNewTweets(req, res, next) {
     const newTweet = req.body.tweet;
-    passport.authenticate('local'),
     tweet.newTweet(newTweet, req.user.username, req.user.id)
     .then(newTweet => 
         res.redirect('/tweets')
