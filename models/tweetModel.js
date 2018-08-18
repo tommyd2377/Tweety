@@ -1,24 +1,24 @@
 const db = require('../config/connection');
 
-function newTweet(tweet_content, creator_username, creator_uid) {
-    return db.one(`
+function newTweet(tweet_content) {
+  return db.one(`
         INSERT INTO tweets (tweet_content)
         VALUES ($/tweet_content/)
         RETURNING *
       `, {
-        tweet_content,
-       
-      });
+    tweet_content,
+
+  });
 }
 
 function getAll() {
-    return db.many(`
+  return db.many(`
         SELECT *
       FROM tweets;
   `);
 }
 
 module.exports = {
-    newTweet,
-    getAll
-}
+  newTweet,
+  getAll,
+};

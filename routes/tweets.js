@@ -1,8 +1,9 @@
 const express = require('express');
+
 const tweetsRouter = express.Router();
 const {
   renderTweets,
-  handleNewTweets
+  handleNewTweets,
 } = require('../controllers/tweetController');
 
 tweetsRouter.route('/')
