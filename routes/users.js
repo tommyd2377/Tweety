@@ -1,15 +1,16 @@
 const express = require('express');
+
 const usersRouter = express.Router();
 const {
   renderUsers,
   renderUserProfile,
-  renderUserTweets
+  renderUserTweets,
 } = require('../controllers/usersController');
 
 usersRouter.route('/')
-  .get(renderUsers)
+  .get(renderUsers);
 
-  usersRouter.route('/:id')
-  .get(renderUserProfile, renderUserTweets)
+usersRouter.route('/:id')
+  .get(renderUserProfile, renderUserTweets);
 
 module.exports = usersRouter;

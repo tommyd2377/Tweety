@@ -1,5 +1,5 @@
-//this file is directly from John's auth example
-//I think this is the only file that I did not need to refactor for my purposes
+// this file is directly from John's auth example
+// I think this is the only file that I did not need to refactor for my purposes
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
@@ -16,7 +16,7 @@ passport.use(new LocalStrategy((email, password, done) => (
     // if the login succeeds, pass the user object as the second argument to done
     .then(user => done(null, user))
     // if the login fails, pass false as the second argument to done
-    .catch(err => done(null, false)))));
+    .catch(() => done(null, false)))));
 
 passport.serializeUser((user, done) => {
   // store the userId in the session

@@ -4,41 +4,37 @@ function renderLogin(req, res) {
   res.render('auth/login');
 }
 
-function handleLogin(req, res, next) {
-  const email = req.body.email;
-  const password = req.body.password;
+function handleLogin(req, res) {
+  const { email, password } = req.body;
   user.login(email, password)
-      .then(theUser => {
-        res.redirect('/tweets');
-        res.locals.user = theUser
-      })
+    .then((theUser) => {
+      res.redirect('/tweets');
+      res.locals.user = theUser;
+    })
     .catch((err) => {
       console.log(err);
       res.redirect('/auth/login');
-    })
+    });
 }
 
 function renderRegister(req, res) {
   res.render('auth/register');
 }
 
-function handleRegister(req, res, next) {
-
-  const username = req.body.username;
-  const email = req.body.email;
-  const password = req.body.password;
+function handleRegister(req, res) {
+  const { email, password, username } = req.body;
   user.register(username, email, password)
-    .then((newUser) => {
+    .then(() => {
       user.login(email, password)
-      .then(theUser => {
-        res.redirect('/tweets');
-        res.send(req.user);
-      })
-      })
-    .catch((err) => {
-      console.log(err);
-      res.redirect('/auth/login');
+        .then(() => {
+          res.redirect('/tweets');
+          res.send(req.user);
+        });
     })
+    .catch((err) => {
+      console.error(err);
+      res.redirect('/auth/login');
+    });
 }
 
 module.exports = {
